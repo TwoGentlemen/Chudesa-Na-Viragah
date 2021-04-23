@@ -1,24 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Car : MonoBehaviour
 {
-    public float speed = 1f;
+
+    [Space(5)]
+    [SerializeField] private float speed = 1f;
+
+    [Range(10,100)]
+    [SerializeField] public int tankFuel = 40; //Максимальный объем бака для топлива
+    [Tooltip("L/sec")]
+    [Range(1,10)]
+    [SerializeField] public int fuelConsuption = 1; //Расход топлива л/сек
+    
     [SerializeField] private Transform centreMass;
     [SerializeField] private WheelCollider[] whewls;
     [SerializeField] private Transform[] wheelMesh;
-
     
-   private Rigidbody rb;
+
+    private Rigidbody rb;
 
 
-   private void Start() 
-   {
+    private void Start() 
+    {
        rb = GetComponent<Rigidbody>();
        rb.centerOfMass = centreMass.localPosition;
-   }
+    }
+
     private void RotAndPosMeshWheel()
     {
         Vector3 pos;
@@ -27,9 +38,10 @@ public class Car : MonoBehaviour
         {
             whewls[i].GetWorldPose(out pos, out rot);
             wheelMesh[i].position = pos;
-            wheelMesh[i].rotation = Quaternion.Euler(0, -90, rot.eulerAngles.x);
+            wheelMesh[i].rotation = rot;
         }
     }
+
     private void Move()
     {
         float vert = Input.GetAxis("Vertical");
@@ -40,10 +52,17 @@ public class Car : MonoBehaviour
         }
 
     }
-   private void Update() 
-   {
-   
+
+    private void FixedUpdate() 
+    {  
         RotAndPosMeshWheel();
         Move();
-   }
+    }
+
+    public void StopCar()
+    {
+        rb.isKinematic = true;
+        this.enabled = false;
+    }
+   
 }
