@@ -23,9 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject panelWin;
     [SerializeField] private GameObject panelOwer;
 
-    [Space(5)]
-    [Header("Cars objects")]
-    [SerializeField] private GameObject[] carObject;//Временно
+
 
 
     private Car _car;
@@ -44,11 +42,11 @@ public class GameManager : MonoBehaviour
 
        // Load();
 
-        if(carObject != null && playerData != null)
+        if(playerData.cars != null && playerData != null)
         {
-            if(carObject.Length < playerData.currentCar) { playerData.currentCar = 0;}
+            if(playerData.cars.Length < playerData.currentCar) { playerData.currentCar = 0;}
 
-            carPos = Instantiate(carObject[playerData.currentCar],transform.position,Quaternion.identity);
+            carPos = Instantiate(playerData.cars[playerData.currentCar].carModels,transform.position,Quaternion.identity);
             _car = carPos.GetComponent<Car>();
         }
 
