@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
         currentVolumeFuel = tankFuel;
 
         StartCoroutine(FuelConsuption());
+        textCoin.text = playerData.coins+"";
     }
 
     private void Update()
@@ -168,5 +169,11 @@ public class GameManager : MonoBehaviour
     {
         currentVolumeFuel+=volume;
         currentVolumeFuel = Mathf.Min(currentVolumeFuel,tankFuel);
+    }
+
+    public void AddCoin(int count)
+    {
+        playerData.coins+=count;
+        textCoin.text = playerData.coins+"";
     }
 }
