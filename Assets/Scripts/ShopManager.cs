@@ -79,7 +79,12 @@ public class ShopManager : MonoBehaviour
     public void BackCar()
     {
         carModel[indexCar].SetActive(false);
-        indexCar = Mathf.Abs((indexCar - 1)) % carModel.Length;
+        if(indexCar == 0)
+        {
+            indexCar=carModel.Length-1;
+        }
+        else { 
+        indexCar = Mathf.Abs((indexCar - 1)) % carModel.Length; }
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
