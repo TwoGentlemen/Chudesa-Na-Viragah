@@ -64,5 +64,6 @@ public class Car : MonoBehaviour
         rb.isKinematic = true;
         this.enabled = false;
     }
+
    
 }

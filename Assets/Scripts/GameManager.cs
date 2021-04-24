@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager instance;
 
+    [Header("Player Data")]
+    [SerializeField] private PlayerDataSO playerData;
+
+    [Space(5)]
     [Header("User interface")]
     [SerializeField] private Slider sliderFuel;
     [SerializeField] private Text textTimer;
@@ -21,10 +25,9 @@ public class GameManager : MonoBehaviour
 
     [Space(5)]
     [Header("Cars objects")]
-    [SerializeField] private GameObject carObject;//Временно
+    [SerializeField] private GameObject[] carObject;//Временно
 
 
-    private float _timer = 0;
     private Car _car;
     private GameObject carPos;
     private float currentVolumeFuel = 0;
@@ -39,9 +42,13 @@ public class GameManager : MonoBehaviour
         if(instance != null) { Debug.LogError("instance in GameManager");}
         instance = this;
 
-        if(carObject != null)
+       // Load();
+
+        if(carObject != null && playerData != null)
         {
-            carPos = Instantiate(carObject,transform.position,Quaternion.identity);
+            if(carObject.Length < playerData.currentCar) { playerData.currentCar = 0;}
+
+            carPos = Instantiate(carObject[playerData.currentCar],transform.position,Quaternion.identity);
             _car = carPos.GetComponent<Car>();
         }
 
@@ -88,6 +95,51 @@ public class GameManager : MonoBehaviour
         {
             GameOwer();
         }
+    }
+
+    private void Save()
+    {
+        SaveSystem.SavePlayer(playerData);
+    }
+
+    private void Load()
+    {
+        SaveData data = SaveSystem.LoadData();
+        if(data == null) { return;}
+
+        playerData.currentCar = data.currentCar;
+        playerData.coins = data.coins;
+
+        
+    }
+    public void NextLevel()
+    {
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
+        if(SceneManager.sceneCountInBuildSettings <= playerData.levelCompleted)
+        {
+            GameRestart();
+        }
+        else
+        {
+            LoadLevel(playerData.levelCompleted);
+        }
+    }
+    public void LoadLevel(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+
+    public void GameWin()
+    {
+        var buf = SceneManager.GetActiveScene().buildIndex+1;
+        if (playerData.levelCompleted <= buf)
+        {
+            playerData.levelCompleted = buf;
+        }
+        panelWin.SetActive(true);
+
+        SaveSystem.SavePlayer(playerData);
+        
     }
 
     private void GameOwer()
