@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 300
-  tankFuel: 20
+  tankFuel: 25
   fuelConsuption: 1
   centreMass: {fileID: 4245066916225828913}
   whewls:
