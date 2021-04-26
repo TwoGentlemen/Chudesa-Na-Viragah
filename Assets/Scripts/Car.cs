@@ -48,7 +48,8 @@ public class Car : MonoBehaviour
 
         for (int i = 0; i < whewls.Length; i++)
         {
-            whewls[i].motorTorque = vert*speed;
+            whewls[i].motorTorque = Mathf.Min(vert*speed*100 / Mathf.Max(Mathf.Abs(whewls[i].rpm),1),speed);
+            Debug.Log("motor = "+whewls[i].motorTorque);
         }
 
     }
