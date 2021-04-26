@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
-  tankFuel: 40
+  speed: 400
+  tankFuel: 35
   fuelConsuption: 2
   centreMass: {fileID: 4245066916225828913}
   whewls:
