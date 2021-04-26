@@ -11,6 +11,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Text buttonText;
     [SerializeField] private Button buttonBuy;
     [SerializeField] private Text textPrice;
+    [SerializeField] private Text countCoin;
+    [SerializeField] private Text nameCar;
 
     private GameObject[] carModel;
     private int indexCar = 0;
@@ -34,10 +36,17 @@ public class ShopManager : MonoBehaviour
             }
         }
         SelectedCar();
+        ChangeCountCoin();
+    }
+
+    private void ChangeCountCoin()
+    {
+        countCoin.text = playerData.coins+"";
     }
 
     private void SelectedCar()
     {
+        nameCar.text = playerData.cars[indexCar].name;
         if (playerData.cars[indexCar].isBuy)
         {
             textPrice.text = "";
@@ -96,6 +105,7 @@ public class ShopManager : MonoBehaviour
         playerData.coins-=playerData.cars[indexCar].price;
 
         SelectedCar();
+        ChangeCountCoin();
     }
 
 }
