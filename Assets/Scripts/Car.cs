@@ -22,12 +22,14 @@ public class Car : MonoBehaviour
     
 
     private Rigidbody rb;
+    private bool isMove = true;
 
 
     private void Start() 
     {
        rb = GetComponent<Rigidbody>();
        rb.centerOfMass = centreMass.localPosition;
+        isMove = true;
     }
 
     private void RotAndPosMeshWheel()
@@ -44,6 +46,7 @@ public class Car : MonoBehaviour
 
     private void Move()
     {
+        if (!isMove) { return; }
         float vert = Input.GetAxis("Vertical");
 
         for (int i = 0; i < whewls.Length; i++)
@@ -65,15 +68,14 @@ public class Car : MonoBehaviour
     }
 
     private void FixedUpdate() 
-    {  
+    {
         RotAndPosMeshWheel();
         Move();
     }
 
     public void StopCar()
     {
-        rb.isKinematic = true;
-        this.enabled = false;
+        isMove = false;
     }
 
    

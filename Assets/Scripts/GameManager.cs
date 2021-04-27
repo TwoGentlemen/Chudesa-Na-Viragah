@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private float frequencyFuel = 0;
 
     private bool isPause = false;
+    private bool isGame = true; //»дет ли игра
 
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         }
 
         Time.timeScale = 1;
+        isGame = true;
     }
     private void Start()
     {
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isGame)
         {
             isPause = !isPause;
             if (isPause)
@@ -83,14 +85,14 @@ public class GameManager : MonoBehaviour
     {
         frequencyFuel = (float)fuelConsuption/10;
 
-        while (currentVolumeFuel > 0)
+        while (currentVolumeFuel > 0 && isGame)
         {
             currentVolumeFuel-=frequencyFuel;
             sliderFuel.value = currentVolumeFuel/(float)tankFuel;
             yield return new WaitForSeconds(0.1f);
         }
 
-        if(currentVolumeFuel <= 0)
+        if(currentVolumeFuel <= 0 )
         {
             GameOwer();
         }
@@ -130,19 +132,23 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        if (!isGame) { return; }
+        isGame = false;
         var buf = SceneManager.GetActiveScene().buildIndex+1;
         if (playerData.levelCompleted <= buf)
         {
             playerData.levelCompleted = buf;
         }
         panelWin.SetActive(true);
-
+        _car.StopCar();
         SaveSystem.SavePlayer(playerData);
         
     }
 
     private void GameOwer()
     {
+        if (!isGame) { return;}
+        isGame = false;
         _car.StopCar();
         panelOwer.SetActive(true);
     }
@@ -156,6 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (!isGame) { return; }
         Time.timeScale = 0;
         panelPause.SetActive(true);
     }
