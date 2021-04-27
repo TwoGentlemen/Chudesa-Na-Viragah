@@ -1,41 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem 
 {
-    public static void SavePlayer(PlayerDataSO data)
+    public static void SaveData(PlayerDataSO playerData)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "player.tw";
+        BinaryFormatter formatter = new BinaryFormatter();
 
-        FileStream stream = new FileStream(path,FileMode.Create);
-
-        SaveData saveData = new SaveData(data);
-
-        formatter.Serialize(stream,saveData);
-        stream.Close();
-
-        Debug.Log("Save !");
+        Data data = new Data(playerData);
+        
+        using(FileStream stream = new FileStream(path, FileMode.Create))
+        {
+            formatter.Serialize(stream,data);
+            Debug.Log("Save data");
+        }
     }
 
-    public static SaveData LoadData()
+    public static Data LoadData()
     {
         string path = Application.persistentDataPath + "player.tw";
-        if (File.Exists(path))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path,FileMode.Open);
+        BinaryFormatter formatter = new BinaryFormatter();
 
-            SaveData data = formatter.Deserialize(stream) as SaveData;
-            stream.Close();
-            return data;
-        }
-        else
+        if (!File.Exists(path)) { return null;}
+
+        using(FileStream stream = new FileStream(path, FileMode.Open))
         {
-            return null;
+            Debug.Log("Load data!");
+            return formatter.Deserialize(stream) as Data;
         }
     }
 }

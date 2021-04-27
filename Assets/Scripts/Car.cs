@@ -61,8 +61,6 @@ public class Car : MonoBehaviour
             {
                 whewls[i].motorTorque = 100 * -whewls[i].rpm / speed;
             }
-
-            Debug.Log("motor = "+whewls[i].motorTorque);
         }
 
     }

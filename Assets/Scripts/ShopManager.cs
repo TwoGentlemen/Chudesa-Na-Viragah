@@ -35,10 +35,14 @@ public class ShopManager : MonoBehaviour
                 indexCar=i;
             }
         }
+
+    }
+
+    private void Start()
+    {
         SelectedCar();
         ChangeCountCoin();
     }
-
     private void ChangeCountCoin()
     {
         countCoin.text = playerData.coins+"";
@@ -103,6 +107,8 @@ public class ShopManager : MonoBehaviour
     {
         playerData.cars[indexCar].isBuy = true;
         playerData.coins-=playerData.cars[indexCar].price;
+
+        SaveSystem.SaveData(playerData);
 
         SelectedCar();
         ChangeCountCoin();

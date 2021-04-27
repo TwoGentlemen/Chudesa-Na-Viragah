@@ -15,17 +15,6 @@ public class Menu : MonoBehaviour
     [SerializeField] private PlayerDataSO playerData;
     [SerializeField] private Button[] levelButton;
 
-    private void LoadData()
-    {
-        SaveData data = SaveSystem.LoadData();
-        if (data != null && playerData != null)
-        {
-            playerData.coins = data.coins;
-            playerData.currentCar = data.currentCar;
-            playerData.levelCompleted = data.levelCompleted;
-        }
-    }
-
     private void UnlockLevels()
     {
         if(playerData.levelCompleted > levelButton.Length)
@@ -50,7 +39,7 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
-       // LoadData();
+
         UnlockLevels();
     }
 

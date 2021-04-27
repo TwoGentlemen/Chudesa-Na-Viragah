@@ -98,21 +98,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Save()
-    {
-        SaveSystem.SavePlayer(playerData);
-    }
-
-    private void Load()
-    {
-        SaveData data = SaveSystem.LoadData();
-        if(data == null) { return;}
-
-        playerData.currentCar = data.currentCar;
-        playerData.coins = data.coins;
-
-        
-    }
     public void NextLevel()
     {
         Debug.Log(SceneManager.sceneCountInBuildSettings);
@@ -132,6 +117,8 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        SaveSystem.SaveData(playerData);
+
         if (!isGame) { return; }
         isGame = false;
         var buf = SceneManager.GetActiveScene().buildIndex+1;
@@ -141,12 +128,13 @@ public class GameManager : MonoBehaviour
         }
         panelWin.SetActive(true);
         _car.StopCar();
-        SaveSystem.SavePlayer(playerData);
         
     }
 
     private void GameOwer()
     {
+        SaveSystem.SaveData(playerData);
+
         if (!isGame) { return;}
         isGame = false;
         _car.StopCar();
@@ -162,12 +150,16 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        SaveSystem.SaveData(playerData);
+
         if (!isGame) { return; }
         Time.timeScale = 0;
         panelPause.SetActive(true);
     }
     public void GameRestart()
     {
+        SaveSystem.SaveData(playerData);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void AddFuel(int volume)
