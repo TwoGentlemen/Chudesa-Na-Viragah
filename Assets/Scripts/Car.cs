@@ -73,7 +73,14 @@ public class Car : MonoBehaviour
 
     public void StopCar()
     {
+
         isMove = false;
+
+        for (int i = 0; i < whewls.Length; i++)
+        {
+            whewls[i].motorTorque =0;
+
+        }
     }
 
    
