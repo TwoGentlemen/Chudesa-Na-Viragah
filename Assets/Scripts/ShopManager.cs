@@ -92,7 +92,7 @@ public class ShopManager : MonoBehaviour
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
-        ButtonClickInfo();
+        ButtonClickInfo(false);
 
     }
 
@@ -108,7 +108,7 @@ public class ShopManager : MonoBehaviour
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
-        ButtonClickInfo();
+        ButtonClickInfo(false);
     }
 
     public void ButtonBuy()
@@ -122,13 +122,14 @@ public class ShopManager : MonoBehaviour
         ChangeCountCoin();
     }
 
-    public void ButtonClickInfo()
+    public void ButtonClickInfo(bool isActive)
     {
         textNameCar.text = playerData.cars[indexCar].name;
         textPriceCar.text = playerData.cars[indexCar].price+"$";
         textMaxSpeedCar.text = playerData.cars[indexCar].maxSpeed+"ml/s";
         textDescriptionCar.text = playerData.cars[indexCar].description+" ";
 
+        if(isActive)
         panelInfoCar.SetActive(true);
     }
 
