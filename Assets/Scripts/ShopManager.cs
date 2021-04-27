@@ -92,6 +92,7 @@ public class ShopManager : MonoBehaviour
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
+        ButtonClickInfo();
 
     }
 
@@ -107,6 +108,7 @@ public class ShopManager : MonoBehaviour
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
+        ButtonClickInfo();
     }
 
     public void ButtonBuy()
