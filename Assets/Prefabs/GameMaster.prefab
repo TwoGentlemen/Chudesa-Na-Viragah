@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a153873129411674a8c1f79e05f6ff68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: ae4815b90e943d04dac36efee96c9177, type: 2}
+  playerData: {fileID: 11400000, guid: ae1d197f32947d847966f832df22e557, type: 2}
   sliderFuel: {fileID: 1712425992848701829}
   textCoin: {fileID: 9099033824022382706}
   panelPause: {fileID: 1712425993144925180}

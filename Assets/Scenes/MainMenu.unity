@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnCar: {fileID: 397098268}
-  playerData: {fileID: 11400000, guid: ae4815b90e943d04dac36efee96c9177, type: 2}
+  playerData: {fileID: 11400000, guid: ae1d197f32947d847966f832df22e557, type: 2}
   buttonText: {fileID: 683402832}
   buttonBuy: {fileID: 1631795411}
   countCoin: {fileID: 911656094}
@@ -10443,7 +10443,7 @@ MonoBehaviour:
   panelShop: {fileID: 1941959935}
   panelLevels: {fileID: 1374410151}
   panelMainMenu: {fileID: 1036726310}
-  playerData: {fileID: 11400000, guid: ae4815b90e943d04dac36efee96c9177, type: 2}
+  playerData: {fileID: 11400000, guid: ae1d197f32947d847966f832df22e557, type: 2}
   levelButton:
   - {fileID: 1930354208}
   - {fileID: 1760825712}
@@ -14765,7 +14765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50e5fe30b4bded4fb5dacdf0beef3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: ae4815b90e943d04dac36efee96c9177, type: 2}
+  playerData: {fileID: 11400000, guid: ae1d197f32947d847966f832df22e557, type: 2}
 --- !u!4 &1626767930
 Transform:
   m_ObjectHideFlags: 0
