@@ -6,9 +6,12 @@ using System.IO;
 
 public static class SaveScore
 {
-    public static string[] Name = new string[10];
-    public static string[] Score = new string[10];
-    public static int playerIndex = 0;
+    public const int countLevel = 5;
+    public const int maxPlayer = 10;
+
+    public static string[,] Name = new string[countLevel, maxPlayer];
+    public static string[,] Score = new string[countLevel, maxPlayer];
+    public static int[] playerIndex = new int[countLevel];
 
 
     private static int convertDeSec(string str)
@@ -24,40 +27,41 @@ public static class SaveScore
         
     }
 
-    private static void Sort()
+    private static void Sort(int levelIndex)
     {
-        for (int i = 0; i < playerIndex-1; i++)
+        for (int i = 0; i < playerIndex[levelIndex]-1; i++)
         {
-            for (int j = i+1; j < playerIndex; j++)
+            for (int j = i+1; j < playerIndex[levelIndex]; j++)
             {
-                if(convertDeSec(Score[i]) > convertDeSec(Score[j])){
+                if(convertDeSec(Score[levelIndex,i]) > convertDeSec(Score[levelIndex,j])){
 
-                    var buf = Score[i];
-                    var buf2 = Name[i];
+                    var buf = Score[levelIndex,i];
+                    var buf2 = Name[levelIndex,i];
 
-                    Score[i] = Score[j];
-                    Name[i] = Name[j];
+                    Score[levelIndex,i] = Score[levelIndex,j];
+                    Name[levelIndex,i] = Name[levelIndex,j];
 
-                    Score[j] = buf;
-                    Name[j] = buf2;
+                    Score[levelIndex,j] = buf;
+                    Name[levelIndex,j] = buf2;
                 }
             }
         }
     }
 
-    public static void AddPlayer(string name, string score)
+    public static void AddPlayer(string name, string score,int levelIndex)
     {
+        if(playerIndex == null) { Debug.LogError("Error");}
 
-        if(playerIndex > 0)
+        if(playerIndex[levelIndex] > 0)
         {
-            for (int i = 0; i < playerIndex; i++)
+            for (int i = 0; i < playerIndex[levelIndex]; i++)
             {
-                if(Name[i] == name)
+                if(Name[levelIndex,i] == name)
                 {
-                    if (convertDeSec(Score[i]) > convertDeSec(score))
+                    if (convertDeSec(Score[levelIndex,i]) > convertDeSec(score))
                     {
-                        Score[i] = score;
-                        Sort();
+                        Score[levelIndex,i] = score;
+                        Sort(levelIndex);
                         SaveDataScore();
                         Debug.Log("Player update");
                     }
@@ -66,47 +70,47 @@ public static class SaveScore
             }
         }
 
-        if (playerIndex >= Name.Length)
+        if (playerIndex[levelIndex] >= maxPlayer)
         {
-            Sort();
+            Sort(levelIndex);
 
-            if (convertDeSec(Score[playerIndex - 1]) > convertDeSec(score))
+            if (convertDeSec(Score[levelIndex,playerIndex[levelIndex] - 1]) > convertDeSec(score))
             {
-                Score[playerIndex - 1] = score;
-                Name[playerIndex-1] = name;
+                Score[levelIndex,playerIndex[levelIndex] - 1] = score;
+                Name[levelIndex,playerIndex[levelIndex]-1] = name;
 
-                Sort();
+                Sort(levelIndex);
                 SaveDataScore();
             }
 
             return; 
         }
 
-        Name[playerIndex] = name;
-        Score[playerIndex] = score;
+        Name[levelIndex, playerIndex[levelIndex] ] = name;
+        Score[levelIndex,playerIndex[levelIndex] ] = score;
 
-        playerIndex++;
+        playerIndex[levelIndex]++;
         Debug.Log("Add player!");
-        Sort();
+        Sort(levelIndex);
         SaveDataScore();
 
     }
 
-    public static void ClearData()
+    public static void ClearData(int levelIndex)
     {
 
-        for (int i = 0; i < Name.Length; i++)
+        for (int i = 0; i < maxPlayer; i++)
         {
-            Name[i] = "";
-            Score[i] = "";
+            Name[levelIndex,i] = "";
+            Score[levelIndex,i] = "";
         }
-        playerIndex = 0;
+        playerIndex[levelIndex] = 0;
         SaveDataScore();
         Debug.Log("Data clear!");
     }
     public static void LoadDataScore()
     {
-        string path = Application.persistentDataPath + "/score.red";
+        string path = Application.persistentDataPath + "/score2.red";
         BinaryFormatter formatter = new BinaryFormatter();
 
         if (!File.Exists(path)) { return; }
@@ -119,14 +123,14 @@ public static class SaveScore
             Score = data.score;
             playerIndex = data.indexPlayer;
         }
-        Sort();
+        
     }
 
     public static void SaveDataScore()
     {
       //  if (playerIndex == 0) { return; }
 
-        string path = Application.persistentDataPath + "/score.red";
+        string path = Application.persistentDataPath + "/score2.red";
         BinaryFormatter formatter = new BinaryFormatter();
 
         using (FileStream stream = new FileStream(path, FileMode.Create))

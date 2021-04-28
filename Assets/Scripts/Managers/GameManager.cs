@@ -105,9 +105,12 @@ public class GameManager : MonoBehaviour
 
     private void SetScorePanel()
     {
+        var a = SceneManager.GetActiveScene().buildIndex - 1;
+        if (a < 0 || a >= SaveScore.countLevel) { Debug.LogError("Error"); return; }
+
         panelSaveScore.SetActive(true);
         textScore.text = "Your score: "+timer.GetTime();
-        inputName.text = (SaveScore.playerIndex == 0)? "Player" + Random.Range(1, 999):SaveScore.Name[SaveScore.playerIndex-1];
+        inputName.text = (SaveScore.playerIndex[a] == 0)? "Player" + Random.Range(1, 999):SaveScore.Name[a,SaveScore.playerIndex[a]-1];
 
     }
 
@@ -115,7 +118,10 @@ public class GameManager : MonoBehaviour
     {
         if(inputName.text == "") { inputName.text = "Player"+ Random.Range(1,999);}
 
-        SaveScore.AddPlayer(inputName.text, timer.GetTime());
+        var a = SceneManager.GetActiveScene().buildIndex - 1;
+        if (a<0 || a >= SaveScore.countLevel) { Debug.LogError("Error"); return;}
+        Debug.Log(a);
+        SaveScore.AddPlayer(inputName.text, timer.GetTime(),a);
 
         panelSaveScore.SetActive(false);
     }
