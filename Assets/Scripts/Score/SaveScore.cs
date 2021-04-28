@@ -30,7 +30,7 @@ public static class SaveScore
         {
             for (int j = i+1; j < playerIndex; j++)
             {
-                if(convertDeSec(Score[i]) < convertDeSec(Score[j])){
+                if(convertDeSec(Score[i]) > convertDeSec(Score[j])){
 
                     var buf = Score[i];
                     var buf2 = Name[i];
@@ -47,6 +47,24 @@ public static class SaveScore
 
     public static void AddPlayer(string name, string score)
     {
+
+        if(playerIndex > 0)
+        {
+            for (int i = 0; i < playerIndex; i++)
+            {
+                if(Name[i] == name)
+                {
+                    if (convertDeSec(Score[i]) > convertDeSec(score))
+                    {
+                        Score[i] = score;
+                        Sort();
+                        SaveDataScore();
+                        Debug.Log("Player update");
+                    }
+                    return;
+                }
+            }
+        }
 
         if (playerIndex >= Name.Length)
         {
@@ -69,6 +87,7 @@ public static class SaveScore
 
         playerIndex++;
         Debug.Log("Add player!");
+        Sort();
         SaveDataScore();
 
     }
@@ -82,6 +101,7 @@ public static class SaveScore
             Score[i] = "";
         }
         playerIndex = 0;
+        SaveDataScore();
         Debug.Log("Data clear!");
     }
     public static void LoadDataScore()
@@ -99,11 +119,12 @@ public static class SaveScore
             Score = data.score;
             playerIndex = data.indexPlayer;
         }
+        Sort();
     }
 
     public static void SaveDataScore()
     {
-        if (playerIndex == 0) { return; }
+      //  if (playerIndex == 0) { return; }
 
         string path = Application.persistentDataPath + "/score.red";
         BinaryFormatter formatter = new BinaryFormatter();

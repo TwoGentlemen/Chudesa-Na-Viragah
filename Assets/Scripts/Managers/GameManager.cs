@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         panelSaveScore.SetActive(true);
         textScore.text = "Your score: "+timer.GetTime();
-        inputName.text = "Player"+Random.Range(0,999);
+        inputName.text = (SaveScore.playerIndex == 0)? "Player" + Random.Range(1, 999):SaveScore.Name[SaveScore.playerIndex-1];
 
     }
 
@@ -120,10 +120,7 @@ public class GameManager : MonoBehaviour
         panelSaveScore.SetActive(false);
     }
 
-    public void buttonClearData()
-    {
-        SaveScore.ClearData();
-    }
+    
 
     public void NextLevel()
     {
