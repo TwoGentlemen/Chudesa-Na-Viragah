@@ -120,7 +120,6 @@ public class GameManager : MonoBehaviour
 
         var a = SceneManager.GetActiveScene().buildIndex - 1;
         if (a<0 || a >= SaveScore.countLevel) { Debug.LogError("Error"); return;}
-        Debug.Log(a);
         SaveScore.AddPlayer(inputName.text, timer.GetTime(),a);
 
         panelSaveScore.SetActive(false);
@@ -130,7 +129,6 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
         if(SceneManager.sceneCountInBuildSettings <= playerData.levelCompleted)
         {
             GameRestart();
