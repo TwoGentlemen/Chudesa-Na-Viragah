@@ -14,7 +14,7 @@ public static class SaveSystem
         using(FileStream stream = new FileStream(path, FileMode.Create))
         {
             formatter.Serialize(stream,data);
-            Debug.Log("Save data");
+
         }
     }
 
@@ -27,7 +27,7 @@ public static class SaveSystem
 
         using(FileStream stream = new FileStream(path, FileMode.Open))
         {
-            Debug.Log("Load data!");
+
             return formatter.Deserialize(stream) as Data;
         }
     }

@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [Space(5)]
     [Header("User interface")]
     [SerializeField] private Slider sliderFuel;
-    [SerializeField] private Text textTimer;
     [SerializeField] private Text textCoin;
 
     [Space(5)]
@@ -22,6 +21,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject panelPause;
     [SerializeField] private GameObject panelWin;
     [SerializeField] private GameObject panelOwer;
+
+    [Space(5)]
+    [SerializeField] private GameObject panelSaveScore;
+    [SerializeField] private ScoreTime timer;
+    [SerializeField] private Text textScore;
+    [SerializeField] private InputField inputName;
 
 
 
@@ -98,6 +103,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void SetScorePanel()
+    {
+        panelSaveScore.SetActive(true);
+        textScore.text = "Your score: "+timer.GetTime();
+        inputName.text = "Player"+Random.Range(0,999);
+
+    }
+
+    public void buttonClickSaveScore()
+    {
+        if(inputName.text == "") { inputName.text = "Player"+ Random.Range(1,999);}
+
+        SaveScore.AddPlayer(inputName.text, timer.GetTime());
+
+        panelSaveScore.SetActive(false);
+    }
+
+    public void buttonClearData()
+    {
+        SaveScore.ClearData();
+    }
+
     public void NextLevel()
     {
         Debug.Log(SceneManager.sceneCountInBuildSettings);
@@ -120,6 +147,8 @@ public class GameManager : MonoBehaviour
         SaveSystem.SaveData(playerData);
 
         if (!isGame) { return; }
+        
+        SetScorePanel();
         isGame = false;
         var buf = SceneManager.GetActiveScene().buildIndex+1;
         if (playerData.levelCompleted <= buf)
