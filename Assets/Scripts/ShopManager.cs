@@ -22,6 +22,9 @@ public class ShopManager : MonoBehaviour
 
     private GameObject[] carModel;
     private int indexCar = 0;
+
+    private YandexSDK sdk;
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -46,6 +49,9 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
+        sdk = YandexSDK.instance;
+        sdk.onRewardedAdReward+=FreeCoins;
+
         SelectedCar();
         ChangeCountCoin();
     }
@@ -133,4 +139,9 @@ public class ShopManager : MonoBehaviour
         panelInfoCar.SetActive(true);
     }
 
+    public void FreeCoins(string paramentr)
+    {
+        playerData.coins+=200;
+        ChangeCountCoin();
+    }
 }

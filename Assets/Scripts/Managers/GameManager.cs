@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOwer()
     {
+        YandexSDK.instance.ShowInterstitial();
         SaveSystem.SaveData(playerData);
 
         if (!isGame) { return;}
