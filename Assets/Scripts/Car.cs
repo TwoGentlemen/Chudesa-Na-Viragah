@@ -49,6 +49,11 @@ public class Car : MonoBehaviour
         if (!isMove) { return; }
         float vert = Input.GetAxis("Vertical");
 
+        if(vert == 0 && GameManager.instance !=null)
+        {
+            vert=GameManager.instance.Gaz();
+        }
+
         for (int i = 0; i < whewls.Length; i++)
         {
             whewls[i].motorTorque = Mathf.Min(vert*speed*100 / Mathf.Max(Mathf.Abs(whewls[i].rpm),1),speed);

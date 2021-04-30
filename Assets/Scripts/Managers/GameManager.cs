@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -102,6 +103,17 @@ public class GameManager : MonoBehaviour
             GameOwer();
         }
     }
+
+    private int _gaz = 0;
+    public int Gaz()
+    {
+        return _gaz;
+    }
+    public void AddGaz(int i)
+    {
+        _gaz=i;
+    }
+
 
     private void SetScorePanel()
     {
