@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         if (a < 0 || a >= SaveScore.countLevel) { Debug.LogError("Error"); return; }
 
         panelSaveScore.SetActive(true);
-        textScore.text = "Your score: "+timer.GetTime();
+        textScore.text = "Ваше время: "+timer.GetTime();
         inputName.text = (SaveScore.playerIndex[a] == 0)? "Player" + Random.Range(1, 999):SaveScore.Name[a,SaveScore.playerIndex[a]-1];
 
     }

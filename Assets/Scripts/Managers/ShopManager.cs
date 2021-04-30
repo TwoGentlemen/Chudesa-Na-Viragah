@@ -66,7 +66,7 @@ public class ShopManager : MonoBehaviour
         if (playerData.cars[indexCar].isBuy)
         {
             
-            buttonText.text = "Selected";
+            buttonText.text = "Выбран";
             buttonBuy.interactable = false;
 
             playerData.currentCar = indexCar;
@@ -77,13 +77,13 @@ public class ShopManager : MonoBehaviour
 
             if (playerData.coins < playerData.cars[indexCar].price)
             {
-                buttonText.text = "No coins";
+                buttonText.text = "Нет монет";
                 buttonBuy.interactable = false;
             }
             else
             {
                 
-                buttonText.text = "Buy";
+                buttonText.text = "Купить";
                 buttonBuy.interactable = true;
             }
 
@@ -132,7 +132,7 @@ public class ShopManager : MonoBehaviour
     {
         textNameCar.text = playerData.cars[indexCar].name;
         textPriceCar.text = playerData.cars[indexCar].price+"$";
-        textMaxSpeedCar.text = playerData.cars[indexCar].maxSpeed+"ml/s";
+        textMaxSpeedCar.text = playerData.cars[indexCar].maxSpeed+"км/ч";
         textDescriptionCar.text = playerData.cars[indexCar].description+" ";
 
         if(isActive)
