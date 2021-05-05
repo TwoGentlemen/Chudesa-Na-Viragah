@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,8 +40,15 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
+        Load();
 
         UnlockLevels();
+    }
+
+    private void Load()
+    {
+        Data data = SaveSystem.LoadData();
+        playerData.Load(data);
     }
 
     public void LoadLevel(int index)

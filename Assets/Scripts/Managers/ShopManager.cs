@@ -25,30 +25,27 @@ public class ShopManager : MonoBehaviour
 
     private YandexSDK sdk;
 
-    private void Awake()
+    private void Start()
     {
         Time.timeScale = 1;
 
-        if(playerData.cars.Length <= 0) { Debug.LogError("Not cars"); return;}
+        if (playerData.cars.Length <= 0) { Debug.LogError("Not cars"); return; }
         carModel = new GameObject[playerData.cars.Length];
 
         for (int i = 0; i < playerData.cars.Length; i++)
         {
-            carModel[i] = Instantiate(playerData.cars[i].carModels,spawnCar.position,spawnCar.rotation);
+            carModel[i] = Instantiate(playerData.cars[i].carModels, spawnCar.position, spawnCar.rotation);
 
-            if (i != playerData.currentCar) { 
-            carModel[i].SetActive(false);
+            if (i != playerData.currentCar)
+            {
+                carModel[i].SetActive(false);
             }
             else
             {
-                indexCar=i;
+                indexCar = i;
             }
         }
 
-    }
-
-    private void Start()
-    {
         sdk = YandexSDK.instance;
         sdk.onRewardedAdReward+=FreeCoins;
 

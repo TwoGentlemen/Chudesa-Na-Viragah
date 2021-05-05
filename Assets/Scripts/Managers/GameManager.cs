@@ -46,23 +46,21 @@ public class GameManager : MonoBehaviour
     {
         if(instance != null) { Debug.LogError("instance in GameManager");}
         instance = this;
-
-       // Load();
-
-        if(playerData.cars != null && playerData != null)
+    }
+    private void Start()
+    {
+        if (playerData.cars != null && playerData != null)
         {
-            if(playerData.cars.Length < playerData.currentCar) { playerData.currentCar = 0;}
+            if (playerData.cars.Length < playerData.currentCar) { playerData.currentCar = 0; }
 
-            carPos = Instantiate(playerData.cars[playerData.currentCar].carModels,transform.position,Quaternion.identity);
+            carPos = Instantiate(playerData.cars[playerData.currentCar].carModels, transform.position, Quaternion.identity);
             _car = carPos.GetComponent<Car>();
         }
 
         Time.timeScale = 1;
         isGame = true;
-    }
-    private void Start()
-    {
-        if(_car == null) { Debug.LogError("_car == null");}
+
+        if (_car == null) { Debug.LogError("_car == null");}
         fuelConsuption = _car.fuelConsuption;
         tankFuel = _car.tankFuel;
         currentVolumeFuel = tankFuel;
