@@ -82,6 +82,7 @@ public class YandexSDK : MonoBehaviour {
     /// Call this to show interstitial ad. Don't call frequently. There is a 3 minute delay after each show.
     /// </summary>
     public void ShowInterstitial() {
+
         ShowFullscreenAd();
     }
 
