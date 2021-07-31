@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     private GameObject carPos;
     private float currentVolumeFuel = 0;
     private int tankFuel = 0;
-    private int fuelConsuption = 1; //Расход топлива л/сек
     private float frequencyFuel = 0;
 
     private bool isPause = false;
@@ -61,7 +60,6 @@ public class GameManager : MonoBehaviour
         isGame = true;
 
         if (_car == null) { Debug.LogError("_car == null");}
-        fuelConsuption = _car.fuelConsuption;
         tankFuel = _car.tankFuel;
         currentVolumeFuel = tankFuel;
 
@@ -87,7 +85,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator FuelConsuption()
     {
-        frequencyFuel = (float)fuelConsuption/10;
+        frequencyFuel = 1f/10f;
 
         while (currentVolumeFuel > 0 && isGame)
         {
