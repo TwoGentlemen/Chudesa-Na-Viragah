@@ -37,7 +37,7 @@ public class Car : MonoBehaviour
     {
        rb = GetComponent<Rigidbody>();
        rb.centerOfMass = centreMass.localPosition;
-        isMove = true;
+       isMove = true;
     }
 
     private void RotAndPosMeshWheel()

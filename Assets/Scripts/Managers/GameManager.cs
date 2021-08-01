@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
             carPos = Instantiate(playerData.cars[playerData.currentCar].carModels, transform.position, Quaternion.identity);
             _car = carPos.GetComponent<Car>();
             _car.enabled = true;
+
+            if(CameraMove.instance != null)
+                CameraMove.instance.SetTarget(carPos.transform);
         }
 
         Time.timeScale = 1;

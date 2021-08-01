@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+	public static CameraMove instance;
+
 	public float damping = 1.5f;
 	public Vector2 offset = new Vector2(2f, 1f);
 	public bool faceLeft;
 	private Transform player;
 	private int lastX;
 
-	void Start()
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    void Start()
 	{
 		offset = new Vector2(Mathf.Abs(offset.x), offset.y);
-		FindPlayer(faceLeft);
+
 	}
 
-	public void FindPlayer(bool playerFaceLeft)
+	public void SetTarget(Transform target)
 	{
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		player = target.transform;
 		lastX = Mathf.RoundToInt(player.position.z);
 	}
 
