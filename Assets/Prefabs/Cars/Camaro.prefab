@@ -205,7 +205,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 3000
     damper: 200
-    targetPosition: 0
+    targetPosition: 1
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -380,7 +380,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 3000
     damper: 200
-    targetPosition: 0
+    targetPosition: 1
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -666,7 +666,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 3000
     damper: 200
-    targetPosition: 0
+    targetPosition: 1
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7459400548821033020}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
@@ -1561,7 +1561,7 @@ WheelCollider:
   m_SuspensionSpring:
     spring: 3000
     damper: 200
-    targetPosition: 0
+    targetPosition: 1
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20

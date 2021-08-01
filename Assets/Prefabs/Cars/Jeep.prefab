@@ -312,13 +312,13 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545730377226708592}
-  m_Center: {x: 0, y: 0.16, z: 0}
-  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.47
   m_SuspensionSpring:
     spring: 5000
     damper: 500
-    targetPosition: 0
-  m_SuspensionDistance: 0.34
+    targetPosition: 1
+  m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.2
@@ -373,13 +373,13 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2375604757167082045}
-  m_Center: {x: 0, y: 0.16, z: 0}
-  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.47
   m_SuspensionSpring:
     spring: 5000
     damper: 500
-    targetPosition: 0
-  m_SuspensionDistance: 0.34
+    targetPosition: 1
+  m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.2
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3706996480458264647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
@@ -754,13 +754,13 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5335016343493370690}
-  m_Center: {x: 0, y: 0.16, z: 0}
-  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.47
   m_SuspensionSpring:
     spring: 5000
     damper: 500
-    targetPosition: 0
-  m_SuspensionDistance: 0.34
+    targetPosition: 1
+  m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.2
@@ -815,13 +815,13 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5539483760415586154}
-  m_Center: {x: 0, y: 0.16, z: 0}
-  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.47
   m_SuspensionSpring:
     spring: 5000
     damper: 500
-    targetPosition: 0
-  m_SuspensionDistance: 0.34
+    targetPosition: 1
+  m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.2

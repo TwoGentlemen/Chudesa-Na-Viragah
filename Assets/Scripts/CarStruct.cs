@@ -8,6 +8,4 @@ public struct Cars
     public int price;
     public bool isBuy;
 
-    public int maxSpeed;
-    public string description;
 }

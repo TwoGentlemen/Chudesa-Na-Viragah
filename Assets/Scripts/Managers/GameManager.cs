@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
 
             carPos = Instantiate(playerData.cars[playerData.currentCar].carModels, transform.position, Quaternion.identity);
             _car = carPos.GetComponent<Car>();
+            _car.enabled = true;
         }
 
         Time.timeScale = 1;
@@ -113,51 +114,18 @@ public class GameManager : MonoBehaviour
 
     private void SetScorePanel()
     {
-        var a = SceneManager.GetActiveScene().buildIndex - 1;
-        if (a < 0 || a >= SaveScore.countLevel) { Debug.LogError("Error"); return; }
-
-        panelSaveScore.SetActive(true);
-        textScore.text = "Ваше время: "+timer.GetTime();
-        inputName.text = (SaveScore.playerIndex[a] == 0)? "Player" + Random.Range(1, 999):SaveScore.Name[a,SaveScore.playerIndex[a]-1];
-
+        var indexCurrentScene = SceneManager.GetActiveScene().buildIndex;
+        
     }
 
-    public void buttonClickSaveScore()
-    {
-        if(inputName.text == "") { inputName.text = "Player"+ Random.Range(1,999);}
 
-        var a = SceneManager.GetActiveScene().buildIndex - 1;
-        if (a<0 || a >= SaveScore.countLevel) { Debug.LogError("Error"); return;}
-        SaveScore.AddPlayer(inputName.text, timer.GetTime(),a);
-
-        panelSaveScore.SetActive(false);
-    }
-
-    
-
-    public void NextLevel()
-    {
-        if(SceneManager.sceneCountInBuildSettings <= playerData.levelCompleted)
-        {
-            GameRestart();
-        }
-        else
-        {
-            LoadLevel(playerData.levelCompleted);
-        }
-    }
-    public void LoadLevel(int index)
-    {
-        SceneManager.LoadScene(index);
-    }
 
     public void GameWin()
     {
         SaveSystem.SaveData(playerData);
 
         if (!isGame) { return; }
-        
-        SetScorePanel();
+
         isGame = false;
         var buf = SceneManager.GetActiveScene().buildIndex+1;
         if (playerData.levelCompleted <= buf)

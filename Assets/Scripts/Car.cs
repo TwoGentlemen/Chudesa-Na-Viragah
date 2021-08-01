@@ -135,33 +135,11 @@ public class Car : MonoBehaviour
         }
 
     }
-    JointSpring f = new JointSpring();
+
     private void FixedUpdate() 
     {
         RotAndPosMeshWheel();
         Move();
-
-        
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            foreach (var item in whewls)
-            {
-                f = item.suspensionSpring;
-                f.targetPosition = 1;
-                item.suspensionSpring = f;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            foreach (var item in whewls)
-            {
-                f = item.suspensionSpring;
-                f.targetPosition = 0;
-                item.suspensionSpring = f;
-            }
-        }
     }
 
     public void StopCar()

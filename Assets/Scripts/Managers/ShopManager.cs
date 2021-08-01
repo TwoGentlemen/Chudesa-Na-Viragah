@@ -14,11 +14,11 @@ public class ShopManager : MonoBehaviour
     
 
     [Space(5)]
-    [SerializeField] private GameObject panelInfoCar;
-    [SerializeField] private Text textNameCar;
+  //  [SerializeField] private GameObject panelInfoCar;
+    //[SerializeField] private Text textNameCar;
     [SerializeField] private Text textPriceCar;
-    [SerializeField] private Text textMaxSpeedCar;
-    [SerializeField] private Text textDescriptionCar;
+   // [SerializeField] private Text textMaxSpeedCar;
+   // [SerializeField] private Text textDescriptionCar;
 
     private GameObject[] carModel;
     private int indexCar = 0;
@@ -44,6 +44,8 @@ public class ShopManager : MonoBehaviour
             {
                 indexCar = i;
             }
+
+            carModel[i].GetComponent<Car>().enabled = false;
         }
 
         sdk = YandexSDK.instance;
@@ -67,6 +69,8 @@ public class ShopManager : MonoBehaviour
             buttonBuy.interactable = false;
 
             playerData.currentCar = indexCar;
+
+            SetPricaCar(false);
         }
         else
         {
@@ -84,7 +88,7 @@ public class ShopManager : MonoBehaviour
                 buttonBuy.interactable = true;
             }
 
-           
+            SetPricaCar(true);
         }
     }
 
@@ -95,7 +99,7 @@ public class ShopManager : MonoBehaviour
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
-        ButtonClickInfo(false);
+        
 
     }
 
@@ -111,7 +115,7 @@ public class ShopManager : MonoBehaviour
         carModel[indexCar].SetActive(true);
 
         SelectedCar();
-        ButtonClickInfo(false);
+        
     }
 
     public void ButtonBuy()
@@ -125,15 +129,12 @@ public class ShopManager : MonoBehaviour
         ChangeCountCoin();
     }
 
-    public void ButtonClickInfo(bool isActive)
+    public void SetPricaCar(bool isActive)
     {
-        textNameCar.text = playerData.cars[indexCar].name;
-        textPriceCar.text = playerData.cars[indexCar].price+"$";
-        textMaxSpeedCar.text = playerData.cars[indexCar].maxSpeed+"κμ/χ";
-        textDescriptionCar.text = playerData.cars[indexCar].description+" ";
-
         if(isActive)
-        panelInfoCar.SetActive(true);
+            textPriceCar.text = playerData.cars[indexCar].price+"$";    
+        else
+            textPriceCar.text = "";
     }
 
     public void FreeCoins(string paramentr)
