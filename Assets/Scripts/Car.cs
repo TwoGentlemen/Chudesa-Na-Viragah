@@ -67,7 +67,7 @@ public class Car : MonoBehaviour
         }
         for (int i = 0; i < 2; i++)
         {
-            whewls[i].motorTorque = Mathf.Min(speed * maxSpeed * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1), maxSpeed);
+            whewls[i].motorTorque = speed * motorTorque * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1);
 
             if (whewls[i].rpm > maxSpeed)
             {
@@ -94,7 +94,7 @@ public class Car : MonoBehaviour
         }
         for (int i = 2; i < whewls.Length; i++)
         {
-            whewls[i].motorTorque = Mathf.Min(speed * maxSpeed * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1), maxSpeed);
+            whewls[i].motorTorque = speed * motorTorque * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1);
 
             if (whewls[i].rpm > maxSpeed)
             {
