@@ -186,6 +186,6 @@ public class GameManager : MonoBehaviour
     public void AddCoin(int count)
     {
         playerData.coins+=count;
-        textCoin.text = playerData.coins+"";
+        textCoin.text = playerData.coins+"$";
     }
 }

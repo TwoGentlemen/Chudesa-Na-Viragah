@@ -25,6 +25,11 @@ public class ShopManager : MonoBehaviour
 
     private YandexSDK sdk;
 
+    private void Awake()
+    {
+        Data data = SaveSystem.LoadData();
+        playerData.Load(data);
+    }
     private void Start()
     {
         Time.timeScale = 1;
@@ -56,23 +61,26 @@ public class ShopManager : MonoBehaviour
     }
     private void ChangeCountCoin()
     {
-        countCoin.text = playerData.coins+"";
+        countCoin.text = playerData.coins+"$";
     }
 
     private void SelectedCar()
     {
-        
+        buttonBuy.interactable = false;
+        buttonBuy.gameObject.SetActive(true);
+
         if (playerData.cars[indexCar].isBuy)
         {
             if(indexCar != playerData.currentCar)
             {
+                buttonText.color = new Color(0, 0, 140);
                 buttonText.text = "Выбрать";
                 buttonBuy.interactable = true;
             }
             else
             {
-                buttonText.text = "Выбран";
-                buttonBuy.interactable = false;
+                buttonBuy.gameObject.SetActive(false);
+                
             }
             
 
@@ -84,12 +92,13 @@ public class ShopManager : MonoBehaviour
 
             if (playerData.coins < playerData.cars[indexCar].price)
             {
-                buttonText.text = "Нет монет";
+                buttonText.color = new Color(140,0,0);
+                buttonText.text = "Нет денег";
                 buttonBuy.interactable = false;
             }
             else
             {
-                
+                buttonText.color = new Color(0, 112, 0);
                 buttonText.text = "Купить";
                 buttonBuy.interactable = true;
             }
