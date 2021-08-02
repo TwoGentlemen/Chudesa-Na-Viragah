@@ -16,8 +16,8 @@ public class Car : MonoBehaviour
     
     [Space(5)]
     [Header("Parametors")]
-    [SerializeField] private float maxSpeed = 1f; //макс скорость
-    [SerializeField] private float motorTorque = 200; //мощьность двигателя 
+    [SerializeField] private float maxSpeed = 100f; //макс скорость
+    [SerializeField] private float motorTorque = 100; //мощьность двигателя 
     [SerializeField] private TypePrivod typePrivod = TypePrivod.all_wheelDrive; //тип привода
 
     [Range(1,255)]
@@ -56,55 +56,82 @@ public class Car : MonoBehaviour
     //Передний привод
     private void FrontWheelDrive(float speed)
     {
+        if (speed == 0)
+        {
+            foreach (var item in whewls)
+            {
+                item.motorTorque = 0;
+            }
+
+            return;
+        }
         for (int i = 0; i < 2; i++)
         {
             whewls[i].motorTorque = Mathf.Min(speed * maxSpeed * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1), maxSpeed);
 
             if (whewls[i].rpm > maxSpeed)
             {
-                whewls[i].motorTorque = 100 * -whewls[i].rpm / maxSpeed;
+                whewls[i].motorTorque = motorTorque * -whewls[i].rpm / maxSpeed;
             }
 
             if (whewls[i].rpm < -maxSpeed)
             {
-                whewls[i].motorTorque = 100 * -whewls[i].rpm / maxSpeed;
+                whewls[i].motorTorque = motorTorque * -whewls[i].rpm / maxSpeed;
             }
         }
     }
     //Задний привод
     private void RearWheelDrive(float speed)
     {
-        Debug.Log(speed +"RearWheel");
+        if (speed == 0)
+        {
+            foreach (var item in whewls)
+            {
+                item.motorTorque = 0;
+            }
+
+            return;
+        }
         for (int i = 2; i < whewls.Length; i++)
         {
             whewls[i].motorTorque = Mathf.Min(speed * maxSpeed * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1), maxSpeed);
 
             if (whewls[i].rpm > maxSpeed)
             {
-                whewls[i].motorTorque = 100 * -whewls[i].rpm / maxSpeed;
+                whewls[i].motorTorque = motorTorque * -whewls[i].rpm / maxSpeed;
             }
 
             if (whewls[i].rpm < -maxSpeed)
             {
-                whewls[i].motorTorque = 100 * -whewls[i].rpm / maxSpeed;
+                whewls[i].motorTorque = motorTorque * -whewls[i].rpm / maxSpeed;
             }
         }
     }
     //Полный привод
     private void AllWheelDrive(float speed)
     {
+        if (speed == 0)
+        {
+            foreach (var item in whewls)
+            {
+                item.motorTorque = 0;
+            } 
+
+            return;
+        }
+
         for (int i = 0; i < whewls.Length; i++)
         {
-            whewls[i].motorTorque = Mathf.Min(speed * maxSpeed * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1), maxSpeed);
+            whewls[i].motorTorque = speed * motorTorque * 100 / Mathf.Max(Mathf.Abs(whewls[i].rpm), 1) ;
 
             if (whewls[i].rpm > maxSpeed)
             {
-                whewls[i].motorTorque = 100 * -whewls[i].rpm / maxSpeed;
+                whewls[i].motorTorque = motorTorque * -whewls[i].rpm / maxSpeed;
             }
 
             if (whewls[i].rpm < -maxSpeed)
             {
-                whewls[i].motorTorque = 100 * -whewls[i].rpm / maxSpeed;
+                whewls[i].motorTorque = motorTorque * -whewls[i].rpm / maxSpeed;
             }
         }
     }
@@ -154,5 +181,16 @@ public class Car : MonoBehaviour
         }
     }
 
-   
+    public void SetTargetPosition(float targetPos)
+    {
+        JointSpring jointSpring = new JointSpring();
+
+        foreach (var wheel in whewls)
+        {
+            jointSpring = wheel.suspensionSpring;
+            jointSpring.targetPosition = targetPos;
+
+            wheel.suspensionSpring = jointSpring;
+        }
+    }
 }
