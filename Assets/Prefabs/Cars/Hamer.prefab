@@ -123,10 +123,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 20000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.45
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
@@ -401,8 +401,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.7326102, z: 2.9}
-  m_Center: {x: 0, y: 0.8731487, z: 0.44000006}
+  m_Size: {x: 1, y: 0.7326102, z: 3.319385}
+  m_Center: {x: 0, y: 0.8731487, z: -0.62491107}
 --- !u!65 &2898286432533237044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -414,8 +414,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9694977, z: 6.451783}
-  m_Center: {x: 0, y: 0.01525116, z: 0.12089157}
+  m_Size: {x: 1, y: 0.9694977, z: 5.6022844}
+  m_Center: {x: 0, y: 0.01525116, z: 0.18489838}
 --- !u!65 &5763116244313352078
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -427,8 +427,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.04, y: 2.18, z: 6.6}
-  m_Center: {x: 0.04510975, y: 0.19697177, z: 0.1184926}
+  m_Size: {x: 2.04, y: 2.18, z: 6.0665812}
+  m_Center: {x: 0.04510975, y: 0.19697177, z: 0.15919137}
 --- !u!114 &5763116244954721435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,10 +529,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 20000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.45
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
@@ -703,10 +703,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 20000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.45
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
@@ -1039,10 +1039,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 20000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.45
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
