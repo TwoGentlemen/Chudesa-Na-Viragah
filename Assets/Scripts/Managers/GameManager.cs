@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
 
     [Space(5)]
     [Header("User interface")]
-    [SerializeField] private Slider sliderFuel;
+    [SerializeField] private Image sliderFuel;
+    [SerializeField] private Text quantityFuel;
     [SerializeField] private Text textCoin;
 
     [Space(5)]
@@ -91,11 +92,14 @@ public class GameManager : MonoBehaviour
     IEnumerator FuelConsuption()
     {
         frequencyFuel = 1f/10f;
+        int startQuantityFuel = (int)currentVolumeFuel;
+
 
         while (currentVolumeFuel > 0 && isGame)
         {
             currentVolumeFuel-=frequencyFuel;
-            sliderFuel.value = currentVolumeFuel/(float)tankFuel;
+            sliderFuel.fillAmount = currentVolumeFuel/(float)tankFuel;
+            quantityFuel.text = (int)currentVolumeFuel + "/"+startQuantityFuel;
             yield return new WaitForSeconds(0.1f);
         }
 
