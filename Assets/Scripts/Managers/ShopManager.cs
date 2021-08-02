@@ -64,11 +64,17 @@ public class ShopManager : MonoBehaviour
         
         if (playerData.cars[indexCar].isBuy)
         {
+            if(indexCar != playerData.currentCar)
+            {
+                buttonText.text = "Выбрать";
+                buttonBuy.interactable = true;
+            }
+            else
+            {
+                buttonText.text = "Выбран";
+                buttonBuy.interactable = false;
+            }
             
-            buttonText.text = "Выбран";
-            buttonBuy.interactable = false;
-
-            playerData.currentCar = indexCar;
 
             SetPricaCar(false);
         }
@@ -120,6 +126,17 @@ public class ShopManager : MonoBehaviour
 
     public void ButtonBuy()
     {
+        if (playerData.cars[indexCar].isBuy)
+        {
+            buttonText.text = "Выбран";
+            buttonBuy.interactable = false;
+
+            playerData.currentCar = indexCar;
+
+            SaveSystem.SaveData(playerData);
+            return;
+        }
+
         playerData.cars[indexCar].isBuy = true;
         playerData.coins-=playerData.cars[indexCar].price;
 
