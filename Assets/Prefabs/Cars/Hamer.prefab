@@ -441,8 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 100
-  motorTorque: 500
+  maxSpeed: 300
+  motorTorque: 10000
   typePrivod: 2
   tankFuel: 255
   centreMass: {fileID: 8436141978068248995}
