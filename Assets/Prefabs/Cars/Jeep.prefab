@@ -621,9 +621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 300
-  motorTorque: 100
+  motorTorque: 200
   typePrivod: 2
-  tankFuel: 255
+  tankFuel: 60
   centreMass: {fileID: 7951703146267948243}
   whewls:
   - {fileID: 8754846225329004030}

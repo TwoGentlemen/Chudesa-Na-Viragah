@@ -853,7 +853,7 @@ MonoBehaviour:
   maxSpeed: 600
   motorTorque: 1000
   typePrivod: 2
-  tankFuel: 255
+  tankFuel: 70
   centreMass: {fileID: 8696190604479281797}
   whewls:
   - {fileID: 8037371620980691880}

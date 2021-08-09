@@ -414,8 +414,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9694977, z: 5.6022844}
-  m_Center: {x: 0, y: 0.01525116, z: 0.18489838}
+  m_Size: {x: 1, y: 0.83302176, z: 5.6022844}
+  m_Center: {x: 0, y: 0.08348912, z: 0.18489838}
 --- !u!65 &5763116244313352078
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -441,10 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 300
-  motorTorque: 10000
+  maxSpeed: 100
+  motorTorque: 300
   typePrivod: 2
-  tankFuel: 255
+  tankFuel: 130
   centreMass: {fileID: 8436141978068248995}
   whewls:
   - {fileID: 7076944807981695118}

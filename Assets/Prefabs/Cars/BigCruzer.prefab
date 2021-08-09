@@ -235,10 +235,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 12000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
@@ -490,10 +490,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 12000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
@@ -696,10 +696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 100
+  maxSpeed: 200
   motorTorque: 500
   typePrivod: 2
-  tankFuel: 255
+  tankFuel: 200
   centreMass: {fileID: 6961280799969111628}
   whewls:
   - {fileID: 8628362116520757089}
@@ -784,10 +784,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 12000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2
@@ -880,10 +880,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 5000
+    spring: 12000
     damper: 500
     targetPosition: 1
-  m_SuspensionDistance: 0.34
+  m_SuspensionDistance: 0.5
   m_ForceAppPointDistance: 0
   m_Mass: 80
   m_WheelDampingRate: 0.2

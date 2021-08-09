@@ -206,7 +206,7 @@ WheelCollider:
     spring: 3000
     damper: 200
     targetPosition: 1
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.1
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -381,7 +381,7 @@ WheelCollider:
     spring: 3000
     damper: 200
     targetPosition: 1
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.1
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -667,7 +667,7 @@ WheelCollider:
     spring: 3000
     damper: 200
     targetPosition: 1
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.1
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -1421,9 +1421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4e189c61d7b224f83a80c7f9aafc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 300
-  motorTorque: 100
-  typePrivod: 2
+  maxSpeed: 350
+  motorTorque: 500
+  typePrivod: 0
   tankFuel: 40
   centreMass: {fileID: 4228571148204000424}
   whewls:
@@ -1562,7 +1562,7 @@ WheelCollider:
     spring: 3000
     damper: 200
     targetPosition: 1
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.1
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
