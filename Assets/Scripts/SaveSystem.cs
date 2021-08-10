@@ -6,7 +6,7 @@ public static class SaveSystem
 {
     public static void SaveData(PlayerDataSO playerData)
     {
-        string path = Application.persistentDataPath + "player.tw";
+        string path = Application.persistentDataPath + "player.s";
         BinaryFormatter formatter = new BinaryFormatter();
 
         Data data = new Data(playerData);
@@ -20,7 +20,7 @@ public static class SaveSystem
 
     public static Data LoadData()
     {
-        string path = Application.persistentDataPath + "player.tw";
+        string path = Application.persistentDataPath + "player.s";
         BinaryFormatter formatter = new BinaryFormatter();
 
         if (!File.Exists(path)) { return null;}
